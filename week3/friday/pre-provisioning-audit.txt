@@ -1,0 +1,53 @@
+=== PRE-PROVISIONING AUDIT ===
+Date: 2026-09-28T18:42:27+03:00
+
+--- Service Accounts ---
+
+--- Group ---
+
+--- Directory Structure ---
+ls: cannot access '/opt/kijanikiosk/': No such file or directory
+
+--- Shared Logs ACLs ---
+getfacl: /opt/kijanikiosk/shared/logs/: No such file or directory
+
+--- Config ACLs ---
+getfacl: /opt/kijanikiosk/config/: No such file or directory
+
+--- UFW Rules ---
+Status: active
+
+     To                         Action      From
+     --                         ------      ----
+[ 1] 22/tcp                     ALLOW IN    Anywhere                  
+[ 2] 8000/tcp                   ALLOW IN    Anywhere                  
+[ 3] 8001/tcp                   DENY IN     Anywhere                  
+[ 4] Anywhere on docker0        ALLOW IN    Anywhere                  
+[ 5] 2112                       ALLOW IN    172.17.0.0/16             
+[ 6] 9090/tcp                   ALLOW IN    Anywhere                  
+[ 7] 22/tcp (v6)                ALLOW IN    Anywhere (v6)             
+[ 8] 8000/tcp (v6)              ALLOW IN    Anywhere (v6)             
+[ 9] 8001/tcp (v6)              DENY IN     Anywhere (v6)             
+[10] Anywhere (v6) on docker0   ALLOW IN    Anywhere (v6)             
+[11] 9090/tcp (v6)              ALLOW IN    Anywhere (v6)             
+
+
+--- Package Holds ---
+
+--- Existing Service Units ---
+
+--- kk-api Security Score ---
+
+--- Log Disk Usage ---
+du: cannot access '/opt/kijanikiosk/shared/logs/': No such file or directory
+
+--- Journal Disk Usage ---
+Archived and active journals take up 3.9G in the file system.
+
+--- Package Versions ---
+ii  curl                                             8.18.0-1ubuntu2.7                          amd64        command line tool for transferring data with URL syntax
+ii  libcurl3t64-gnutls:amd64                         8.18.0-1ubuntu2.7                          amd64        easy-to-use client-side URL transfer library (GnuTLS flavour)
+ii  libcurl4-openssl-dev:amd64                       8.18.0-1ubuntu2.7                          amd64        development files and documentation for libcurl (OpenSSL flavour)
+ii  libcurl4t64:amd64                                8.18.0-1ubuntu2.7                          amd64        easy-to-use client-side URL transfer library (OpenSSL flavour)
+ii  nginx                                            1.28.3-2ubuntu1.11                         amd64        small, powerful, scalable web/proxy server
+ii  nginx-common                                     1.28.3-2ubuntu1.11                         all          small, powerful, scalable web/proxy server - common files

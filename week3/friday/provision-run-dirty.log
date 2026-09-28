@@ -1,0 +1,81 @@
+[2026-09-28T22:45:41+03:00] === PHASE 1: Package Management ===
+[2026-09-28T22:45:41+03:00] Clearing hold on nginx
+Cancelled hold on nginx.
+[2026-09-28T22:45:42+03:00] Clearing hold on curl
+Cancelled hold on curl.
+[2026-09-28T22:45:42+03:00] nginx already at pinned version 1.28.3-2ubuntu1.11, skipping install
+nginx set on hold.
+curl set on hold.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+acl is already the newest version (2.3.2-2).
+logrotate is already the newest version (3.22.0-1build1).
+jq is already the newest version (1.8.1-4ubuntu2).
+Solving dependencies...
+The following packages were automatically installed and are no longer required:
+  bridge-utils tracker-extract ubuntu-fan
+Use 'sudo apt autoremove' to remove them.
+0 to upgrade, 0 to newly install, 0 to remove and 18 not to upgrade.
+[2026-09-28T22:45:44+03:00] ✓ PASS: nginx at pinned version
+[2026-09-28T22:45:44+03:00] === PHASE 2: Users & Groups ===
+[2026-09-28T22:45:44+03:00] Created group kijanikiosk
+[2026-09-28T22:45:44+03:00] Created user: kk-api
+[2026-09-28T22:45:44+03:00] Created user: kk-payments
+[2026-09-28T22:45:44+03:00] Created user: kk-logs
+[2026-09-28T22:45:44+03:00] ✓ PASS: kijanikiosk group exists
+[2026-09-28T22:45:44+03:00] ✓ PASS: kk-api user exists
+[2026-09-28T22:45:44+03:00] ✓ PASS: kk-payments user exists
+[2026-09-28T22:45:44+03:00] ✓ PASS: kk-logs user exists
+[2026-09-28T22:45:44+03:00] === PHASE 3: ACLs & Access Model ===
+getfacl: Removing leading '/' from absolute path names
+[2026-09-28T22:45:44+03:00] ✓ PASS: shared/logs has default ACL for kk-api
+getfacl: Removing leading '/' from absolute path names
+[2026-09-28T22:45:44+03:00] ✓ PASS: shared/logs has default ACL for kk-payments
+[2026-09-28T22:45:44+03:00] === PHASE 4: Environment Files ===
+[2026-09-28T22:45:44+03:00] ✓ PASS: kk-api can read api.env
+[2026-09-28T22:45:44+03:00] ✓ PASS: kk-payments can read payments-api.env
+[2026-09-28T22:45:44+03:00] ✓ PASS: kk-logs can read logs.env
+[2026-09-28T22:45:44+03:00] === PHASE 5: Firewall Configuration ===
+Backing up 'user.rules' to '/etc/ufw/user.rules.20260928_224545'
+Backing up 'before.rules' to '/etc/ufw/before.rules.20260928_224545'
+Backing up 'after.rules' to '/etc/ufw/after.rules.20260928_224545'
+Backing up 'user6.rules' to '/etc/ufw/user6.rules.20260928_224545'
+Backing up 'before6.rules' to '/etc/ufw/before6.rules.20260928_224545'
+Backing up 'after6.rules' to '/etc/ufw/after6.rules.20260928_224545'
+
+Default incoming policy changed to 'deny'
+(be sure to update your rules accordingly)
+Default outgoing policy changed to 'allow'
+(be sure to update your rules accordingly)
+Rules updated
+Rules updated (v6)
+Rules updated
+Rules updated
+Rules updated
+Rules updated (v6)
+Rules updated
+Rules updated (v6)
+Firewall is active and enabled on system startup
+[2026-09-28T22:45:47+03:00] Verifying firewall rules...
+[2026-09-28T22:45:47+03:00] ✓ PASS: SSH (22) allowed
+[2026-09-28T22:45:47+03:00] ✓ PASS: HTTP (80) allowed
+[2026-09-28T22:45:47+03:00] ✓ PASS: port 3001 external deny present
+[2026-09-28T22:45:47+03:00] === PHASE 6: Systemd Service Units ===
+[2026-09-28T22:45:48+03:00] ✓ PASS: kk-api.service exists
+[2026-09-28T22:45:48+03:00] ✓ PASS: kk-payments.service exists
+[2026-09-28T22:45:48+03:00] ✓ PASS: kk-logs.service exists
+[2026-09-28T22:45:48+03:00] === PHASE 7: Journal Persistence & Log Rotation ===
+[2026-09-28T22:45:49+03:00] ✓ PASS: logrotate config passes debug check
+[2026-09-28T22:45:49+03:00] Simulating log rotation...
+error: skipping "/opt/kijanikiosk/shared/logs/*.log" because parent directory has insecure permissions (It's world writable or writable by group which is not "root") Set "su" directive in config file to tell logrotate which user/group should be used for rotation.
+[2026-09-28T22:45:49+03:00] ✓ PASS: Access model survives logrotate
+[2026-09-28T22:45:49+03:00] ✓ PASS: journal persistence configured
+[2026-09-28T22:45:49+03:00] ✓ PASS: journal capped at 500M
+[2026-09-28T22:45:49+03:00] === PHASE 8: Health Checks ===
+[2026-09-28T22:45:49+03:00] ✓ PASS: health check file exists
+[2026-09-28T22:45:49+03:00] ✓ PASS: health check readable by kijanikiosk group
+[2026-09-28T22:45:49+03:00] Health check results: api=down, payments=down, logs=down
+[2026-09-28T22:45:49+03:00] === FINAL VERIFICATION ===
+[2026-09-28T22:45:49+03:00] Passed: 14 | Failed: 0
+[2026-09-28T22:45:49+03:00] ✓ ALL CHECKS PASSED - Provisioning complete
