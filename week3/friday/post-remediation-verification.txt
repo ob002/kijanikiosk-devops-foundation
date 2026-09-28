@@ -1,0 +1,14 @@
+# Post-Remediation Verification Output
+# Generated: 2026-09-28
+
+## Logrotate Debug Output
+$(sudo logrotate --debug /etc/logrotate.d/kijanikiosk 2>&1)
+
+## ACL Verification
+$(getfacl /opt/kijanikiosk/shared/logs/)
+
+## File Permissions After Rotation
+$(ls -la /opt/kijanikiosk/shared/logs/)
+
+## Access Model Test
+$(sudo -u kk-api touch /opt/kijanikiosk/shared/logs/test-write.tmp && echo "PASS: kk-api can write after logrotate" || echo "FAIL: kk-api cannot write to shared/logs")
