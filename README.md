@@ -43,9 +43,9 @@ Each phase is idempotent — safe to run multiple times on a dirty VM.
 
 | Service | Target | Achieved | Status |
 |---------|--------|----------|--------|
-| kk-api | < 3.5 | 3.2
-| kk-payments | < 2.5 | 1.3 
-| kk-logs | < 3.5 | 3.2 
+| kk-api | < 3.5 | 3.2 | passed |
+| kk-payments | < 2.5 | 1.3 | passed |
+| kk-logs | < 3.5 | 3.2 | passed |
 
 The payments service uses `ProtectSystem=strict`, `PrivateUsers=yes`, `CapabilityBoundingSet=` (empty), and a strict system call filter to achieve an exposure score of 1.3.
 
